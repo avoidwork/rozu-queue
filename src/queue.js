@@ -1,5 +1,3 @@
-const Set = require("es6-set");
-const deferred = require("tiny-defer");
 const retsu = require("retsu");
 
 class Queue extends Array {
