@@ -24,8 +24,12 @@
   "homepage": "https://github.com/avoidwork/rozu-queue#readme",
   "dependencies": {
     "cqueue": "^0.1.2",
+    "es6-map": "^0.1.1",
+    "es6-set": "^0.1.1",
     "precise": "^1.1.0",
-    "redis": "^1.0.0"
+    "redis": "^1.0.0",
+    "retsu": "^1.1.0",
+    "tiny-defer": "^1.0.2"
   },
   "devDependencies": {
     "babel-eslint": "^4.0.0",
@@ -33,7 +37,7 @@
     "grunt-babel": "^5.0.1",
     "grunt-cli": "~0.1.13",
     "grunt-contrib-concat": "~0.5.0",
-    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-nodeunit": "^0.4.1",
     "grunt-eslint": "^17.0.0",
     "grunt-nsp-package": "~0.0.5"
   }
