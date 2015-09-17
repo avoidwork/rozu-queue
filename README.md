@@ -3,6 +3,26 @@ Offline processing queue for rozu webhook server.
 
 [![build status](https://secure.travis-ci.org/avoidwork/rozu-queue.svg)](http://travis-ci.org/avoidwork/rozu-queue)
 
+## Example
+```
+var queue = require('rozu-queue')('rozu', 6379, 'localhost');
+
+function repeat () {
+	process.nextTick(function () {
+		queue.process(50).then(function (data) {
+			// do something with `data`
+			repeat();
+		}, function (e) {
+			console.error(e.stack);
+			repeat();
+		});
+		repeat();
+	});
+}
+
+repeat();
+```
+
 ## API
 ### constructor(channel, port, host)
 Takes the redis channel, port & host as parameters, and creates an in RAM queue which can be batched processed with
