@@ -35,10 +35,13 @@ class Queue extends Array {
 }
 
 function queue (...args) {
-	let obj = new Queue(...args);
+	let obj = new Queue(...args),
+		regex = new RegExp("^" + obj.config[0]);
 
 	obj.client.on("message", function (channel, message) {
-		obj.push({channel: channel, message: JSON.parse(message)});
+		if (regex.test(channel)) {
+			obj.push({channel: channel, message: JSON.parse(message)});
+		}
 	});
 
 	return obj;

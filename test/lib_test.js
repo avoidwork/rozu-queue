@@ -3,7 +3,7 @@ var rozo_queue = require("../lib/index"),
 	assert = require("assert");
 
 describe("Queue behavior", function () {
-	var queue = rozo_queue('rozu_test', 6379, "localhost");
+	var queue = rozo_queue('rozu', 6379, "localhost");
 
 	describe("First into the queue", function () {
 		it("Adds items to the queue", function (done) {
@@ -24,6 +24,17 @@ describe("Queue behavior", function () {
 				assert.equal(true, args[0].message.abc);
 				done();
 			});
+		});
+	});
+
+	describe("Last out of the queue", function () {
+		it("Processes items from the queue", function (done) {
+			assert.equal(1, queue.length);
+			queue.drain(function (i) {
+				assert.equal(false, i.message.abc);
+			});
+			assert.equal(0, queue.length);
+			done();
 		});
 	});
 });
