@@ -1,17 +1,21 @@
 var rozo_queue = require("../lib/index"),
 	array = require("retsu"),
-	assert = require("assert");
+	assert = require("assert"),
+	redis = require("redis"),
+	client = redis.createClient(6379, "localhost");
 
 describe("Queue behavior", function () {
-	var queue = rozo_queue('rozu', 6379, "localhost");
+	var queue = rozo_queue("rozu", 6379, "localhost");
 
 	describe("First into the queue", function () {
 		it("Adds items to the queue", function (done) {
 			assert.equal(0, queue.length);
-			queue.push({channel:'rozu_test', message: {abc:true}});
-			queue.push({channel:'rozu_test', message: {abc:false}});
-			assert.equal(2, queue.length);
-			done();
+			queue.push({channel:queue.config[0], message: {abc:true}});
+			client.publish(queue.config[0], JSON.stringify({abc:false}));
+			queue.client.on("message", function () {
+				assert.equal(2, queue.length);
+				done();
+			});
 		});
 	});
 
