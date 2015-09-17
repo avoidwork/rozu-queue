@@ -18,13 +18,10 @@ class Queue extends Array {
 		this.length = 0;
 	}
 
-	process (n, delay = 0) {
+	process (n = 1, delay = 0) {
 		let defer = deferred();
 		let fn = () => {
-			let data = retsu.limit(this, 0, n);
-
-			retsu.remove(0, n);
-			defer.resolve(data);
+			defer.resolve(this.splice(0, n));
 		};
 
 		if (delay === 0) {

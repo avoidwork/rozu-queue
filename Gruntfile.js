@@ -16,14 +16,23 @@ module.exports = function (grunt) {
 		},
 		eslint: {
 			target: ["src/*.js"]
+		},
+		mochaTest : {
+			options: {
+				reporter: "spec"
+			},
+			test : {
+				src : ["test/*_test.js"]
+			}
 		}
 	});
 
 	// tasks
 	grunt.loadNpmTasks("grunt-babel");
 	grunt.loadNpmTasks("grunt-eslint");
+	grunt.loadNpmTasks("grunt-mocha-test");
 
 	// aliases
-	grunt.registerTask("test", ["eslint"]);
-	grunt.registerTask("default", ["test", "babel"]);
+	grunt.registerTask("test", ["eslint", "mochaTest"]);
+	grunt.registerTask("default", ["babel", "test"]);
 };
