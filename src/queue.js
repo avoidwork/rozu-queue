@@ -1,7 +1,6 @@
 const path = require("path");
 const client = require(path.join(__dirname, "client.js"));
 const deferred = require("tiny-defer");
-const retsu = require("retsu");
 
 class Queue extends Array {
 	constructor (...args) {
@@ -12,7 +11,7 @@ class Queue extends Array {
 
 	drain (fn = undefined) {
 		if (fn) {
-			retsu.iterate(this, fn);
+			this.forEach(fn);
 		}
 
 		this.length = 0;

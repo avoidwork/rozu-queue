@@ -1,5 +1,4 @@
 var rozo_queue = require("../lib/index"),
-	array = require("retsu"),
 	assert = require("assert"),
 	redis = require("redis"),
 	client = redis.createClient(6379, "localhost");

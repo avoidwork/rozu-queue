@@ -32,7 +32,7 @@ delays, as well as an easy drain.
 Returns a Promise of the data to be processed.
 
 ### drain(fn)
-Drains the queue and executes an Function against the items as they leave.
+Drains the queue and executes an optional Function against the items if provided.
 
 ## License
 Copyright (c) 2015 Jason Mulligan

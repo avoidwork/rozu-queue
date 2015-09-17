@@ -1,6 +1,6 @@
 {
   "name": "rozu-queue",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Offline rozu processing queue",
   "main": "lib/index.js",
   "scripts": {
@@ -12,6 +12,7 @@
   },
   "keywords": [
     "rozu",
+    "redis",
     "queue",
     "processing",
     "offline"
@@ -25,7 +26,6 @@
   "dependencies": {
     "es6-map": "^0.1.1",
     "redis": "^1.0.0",
-    "retsu": "^1.1.0",
     "tiny-defer": "^1.0.2"
   },
   "devDependencies": {
