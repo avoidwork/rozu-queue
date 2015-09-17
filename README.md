@@ -4,7 +4,7 @@ Offline processing queue for rozu webhook server.
 [![build status](https://secure.travis-ci.org/avoidwork/rozu-queue.svg)](http://travis-ci.org/avoidwork/rozu-queue)
 
 ## Example
-```
+```javascript
 var queue = require('rozu-queue')('rozu', 6379, 'localhost');
 
 function repeat () {
@@ -16,7 +16,6 @@ function repeat () {
 			console.error(e.stack);
 			repeat();
 		});
-		repeat();
 	});
 }
 
